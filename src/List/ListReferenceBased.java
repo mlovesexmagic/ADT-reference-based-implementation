@@ -126,17 +126,32 @@ public class ListReferenceBased implements ListInterface {
     // Precondition:  Two lists are present
     // Postcondition: Returns  true if aList has values in the same order as the current list, else returns false                         
 
+        boolean logichere = false;
 
-    
-    //********TO DO********
-    //returns true if aList has the saem values in the same order as the current list object; else returns false
+        //when both lists have same size
+        if(numItems == aList.numItems){
+        
+            Node curr = head;           //first list's head
+            Node curr2 = aList.head;    //second list's head
+
+            //while linklist is not empty, continues
+            while(curr != null){              
+                if(curr.item != curr2.item){
+                    logichere = false; 
+                    return logichere;
+                }
+
+                curr = curr.next;   //first list loop
+                curr2 = curr2.next; //second list loop
+            } //end while               
             
+            logichere = true; 
+        }else{
+            logichere = false;
+        }
 
-    //System.out.println("The two lists are eqal");
+        //return boolean
+        return logichere;
+    }//end equals  method
 
-      return true;
-    // System.out.println("The two lists are not equal");
-
-    }
-
-}
+} //end class

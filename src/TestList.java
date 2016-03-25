@@ -19,51 +19,52 @@ public class TestList
 //------------------------------------------------------------------------
    static Scanner in = new Scanner(System.in);  //Scanner for keyboard input
    public static void main(String args[]) {
-//      int listnum;
-//      int replacer;
-//      Node[] nodes;
-      
-      
-      boolean done = false;
-      while(!done) {
-         // add code to empty the list?
-        menu(); //display the main menu
-        int choice = in.nextInt(); //get the user's keyboard Integer input
-                
+
+       boolean done = false;
+        while(!done) {
+
+            menu(); //display the main menu
+            int choice = in.nextInt(); //get the user's keyboard Integer input
+
+            if(choice == 1){
+                replacement();   
+            }
+            if(choice == 2){
+                compare();
+            }
+            if(choice == 3){
+                done = true;
+            }
         
-        if(choice == 1){
-            replacement();
-        }
-        
-        
-        System.out.println("");
-     }//end while
+            System.out.println("");
+        }//end while
       
-   }// end main
+    }// end main
    
-   // Main menu display for the program
-   public static void menu(){
+    // Main menu display for the program
+    public static void menu(){
         System.out.println("What you want to do?");
         System.out.println("1)Replace a value in a list of integers");
         System.out.println("2)Compare two lists of integers"); 
         System.out.println("3)Quit");
         System.out.print("Enter your choice: ");
-   }//end menu()
+    }//end menu()
 
-   
+   //replace value(s) in a list
     public static void replacement(){
  
         List.ListReferenceBased aList = new List.ListReferenceBased();
 
         System.out.print("Enter a list of integers: "); //prompt for user input
             
-        in.nextLine();
-        String userInput = in.nextLine();
+        in.nextLine();                      //clear the newline
+        String userInput = in.nextLine();   //user input
 
         //use tokenizer to break down a string into pieces of ints
         StringTokenizer sx = new StringTokenizer(userInput);
-        int sxSize = sx.countTokens();
+        int sxSize = sx.countTokens();  //get the size of tokens
 
+        //store tokens into aList
         while (sx.hasMoreTokens()) {
                for(int i=0; i < sxSize; i++){
                    int newInput = Integer.parseInt(sx.nextToken());
@@ -71,62 +72,67 @@ public class TestList
                 }        
         }// end while
             
-            
-           System.out.print("Enter a value to be modified: ");
-           int mod = in.nextInt();
-                      
-           System.out.print("Enter replacement value: ");
-           int replacer = in.nextInt();
-           
-           int count = aList.replace(mod, replacer);
-           
-           System.out.print("Modified list: ");
-           for(int i=0; i< aList.size(); i++){
-               System.out.print(aList.get(i) + " ");
-           }
-           System.out.println("\nNumber of items replaced: " + count );
-           
-           System.out.println("");
+        System.out.print("Enter a value to be modified: ");
+        int mod = in.nextInt();
+
+        System.out.print("Enter replacement value: ");
+        int replacer = in.nextInt();
+
+        //replace method call, get return value "count"
+        int count = aList.replace(mod, replacer);       
+
+        //print out the new list to console
+        System.out.print("Modified list: ");
+        for(int i=0; i< aList.size(); i++){
+            System.out.print(aList.get(i) + " ");
+        }
+        
+        //print out the Number of items replaced
+        System.out.println("\nNumber of items replaced: " + count + " " );
     }  
 
 
-    //public static void compare() {
-    //   System.out.print("Enter first list to be compared: ");
-    //    String input;
-    //    List.Node aList = new List.Node(null);
-    //        input = in.nextLine();
-    //        input = in.nextLine();
-    //        StringTokenizer sts = new StringTokenizer(input);
-    //        int stsSize = sts.countTokens();
-    //        Object itemss[] = new Object[stsSize];
-    //        while (sts.hasMoreTokens()) {
-    //               for(int i=0; i<stsSize; i++){
-    //                   int newInput = Integer.parseInt(sts.nextToken());
-    //                    itemss[i] = newInput;
-    //                    aList.item = itemss[i];
-    //                    aList.next = aList;
-    //          }
-    //      }
-    //   System.out.print("Enter second list to be compared: ");
-    //       List.Node list2 = new List.Node(null);
-    //      String inputs;
-    //        inputs = in.nextLine();
-    //        inputs = in.nextLine();
-    //        StringTokenizer tok = new StringTokenizer(inputs);
-    //        int tokSize = tok.countTokens();
-    //        Object itemz[] = new Object[tokSize];
-    //        while (tok.hasMoreTokens()) {
-    //               for(int i=0; i<tokSize; i++){
-    //                   int newInput = Integer.parseInt(tok.nextToken());
-    //                    itemz[i] = newInput;
-    //                    list2.item = itemz[i];
-    //                    list2.next = list2;
-    //      }
-    //   }
-    //
-    //    //equals(aList);
-    //
-    // }//end compare()
+    //compare two list 
+    public static void compare() {
+        
+        //create two empty lists
+        List.ListReferenceBased bList = new List.ListReferenceBased();
+        List.ListReferenceBased cList = new List.ListReferenceBased();
 
+        System.out.print("Enter first list to be compared: ");
+        in.nextLine();
+        String userInput = in.nextLine();
+        
+        //store data into first list
+        StringTokenizer sts = new StringTokenizer(userInput);
+        int stsSize = sts.countTokens();
+        while (sts.hasMoreTokens()) {
+            for(int i=0; i<stsSize; i++){
+                int newInput = Integer.parseInt(sts.nextToken());
+                bList.add(i, newInput);
+            }
+        }//end while
+        
+        System.out.print("Enter second list to be compared: ");
+        String userNewInput = in.nextLine();
+
+        //store data into second list
+        StringTokenizer something = new StringTokenizer(userNewInput);
+        int somethingSize = something.countTokens();
+        while (something.hasMoreTokens()) {
+            for(int i=0; i<somethingSize; i++){
+                int newwInput = Integer.parseInt(something.nextToken());
+                cList.add(i, newwInput);
+            }
+        }//end while
+    
+        //equals method call, get return boolean 
+        boolean logic = bList.equals(cList);
+        if(logic == true){
+            System.out.println("The two lists are equal");
+        } else {
+            System.out.println("The two lists are not equal");
+        }
+    }//end compare()
 
 } // end class
