@@ -1,9 +1,6 @@
 # ADT-reference-based-implementation
 This lab will give you experience modifying a reference-based implementation of an ADT.
 
-Purpose
-
-This lab will give you experience modifying a reference-based implementation of an ADT.
 
     What you want to do?
     1) Replace a value in a list of integers
