@@ -1,7 +1,7 @@
 # ADT-reference-based-implementation
 This program will give you experience modifying a reference-based implementation of an ADT.
 
-This program is created with NetBeans platform. Source codes are in the src folder.
+This program is created with NetBeans platform. Source codes are in the [src folder](/src).
 
     What you want to do?
     1) Replace a value in a list of integers
