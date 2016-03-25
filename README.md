@@ -3,6 +3,8 @@ This program will give you experience modifying a reference-based implementation
 
 This program is created with NetBeans platform. Source codes are in the [src folder](/src).
 
+##Captured output
+
     What you want to do?
     1) Replace a value in a list of integers
     2) Compare two lists of integers
