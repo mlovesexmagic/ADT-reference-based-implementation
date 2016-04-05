@@ -1,5 +1,8 @@
 package List;
-
+//***************************************************************
+// Lab 3			Authors: Zhipeng Mei, Vince Garcia
+// Class: CS 111C		Date:	 4/6/16
+//***************************************************************
 public class Node {
     public Object item;
     public Node next;
@@ -14,8 +17,3 @@ public class Node {
         next = nextNode;
     } // end constructor
 } // end class Node
-
-
-//You can use this class as follows:
-// Node n = new Node(new Integer(6));
-// Node first =  new Node(new Integer(9), n);

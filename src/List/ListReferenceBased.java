@@ -1,14 +1,16 @@
 package List;
-// ************************************************************************************************************
-// Lab 2			Authors: Zhipeng Mei, Vince Garcia
+// ***************************************************************************************************************
+// Lab 3			Authors: Zhipeng Mei, Vince Garcia
 // Class: CS 111C		Date:	 4/6/16
-//  The ListReferenceBased class is a reference based implementation of the ADT list.
-//  The clas methods are not called within the methods we wrote.
-// Methods replace and equals were added to this class as requested
-// Method replace replaces each occurence of oldValue in the list with newValue.  it then return the number of items replaced
-// Method equals is a boolean that returns true if aList has values in the same order as the current list, else returns false.
-//  
-// ****************************************************************************************************
+//  The ListReferenceBased class is a reference based implementation of the ADT list.  It does not call any ListInterface methods.
+//  The two new methods in this class are called from the TestList class and handle their corresponding operations as follows:
+// Method replace() replaces each occurence of oldValue in the list with newValue.  it then return the number of items replaced
+// Method equals() is a boolean that returns true if aList has values in the same order as the current list, else returns false.
+//  Methods replace() and equal() use nodes from the Node class to create their lists.  This used in place of the methods from ListInterface
+//  While loops are used to increment the nodes and add appropriate input.  Loops are also used within equals() to determine if the nodes
+//  contain equal values at the same position within the list.
+//  A counter is used within method replace() to count the number of items replaced.  It increments at each occurance of a replacement.
+// ***************************************************************************************************************
 // ****************************************************
 // Reference-based implementation of ADT list.
 // ****************************************************
@@ -104,54 +106,54 @@ public class ListReferenceBased implements ListInterface {
         // Precondition:  oldValue and newValue are valid values within the list
         // Postcondition: Replaces each occurence of oldValue in the list with newValue, returns number of items replaced
         //counter to determine how many items are replaced. increments each time an item is replaced
-        
+
         int count = 0;
         //loop to search the list, perform replacement
-        
+
         Node curr = head;
-        
+
         while(curr != null){
             if(curr.item == oldValue){
                 curr.item = newValue;
-                count++;    
+                count++;
             }
             curr = curr.next;
         } //end while
-        
-//        System.out.println("Number of items replaced: " + count); 
+
+//        System.out.println("Number of items replaced: " + count);
         return count;
     }
 
     public boolean equals(ListReferenceBased aList) {
     // Precondition:  Two lists are present
-    // Postcondition: Returns  true if aList has values in the same order as the current list, else returns false                         
+    // Postcondition: Returns  true if aList has values in the same order as the current list, else returns false
 
-        boolean logichere = false;
+        boolean done;
 
         //when both lists have same size
         if(numItems == aList.numItems){
-        
+
             Node curr = head;           //first list's head
             Node curr2 = aList.head;    //second list's head
 
             //while linklist is not empty, continues
-            while(curr != null){              
+            while(curr != null){
                 if(curr.item != curr2.item){
-                    logichere = false; 
-                    return logichere;
+                    done = false;
+                    return done;
                 }
 
                 curr = curr.next;   //first list loop
                 curr2 = curr2.next; //second list loop
-            } //end while               
-            
-            logichere = true; 
+            } //end while
+
+            done = true;
         }else{
-            logichere = false;
+            done = false;
         }
 
         //return boolean
-        return logichere;
+        return done;
     }//end equals  method
 
 } //end class
